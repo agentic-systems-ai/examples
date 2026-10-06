@@ -18,6 +18,7 @@ Each folder is self-contained and has its own README and `requirements.txt`.
 | [`11-harness`](11-harness) | [Harness engineering: the runtime is the product](https://www.agenticsystems.ai/blog/harness-engineering/) |
 | [`12-evals`](12-evals) | [Evals for agents: pass@k is lying to you](https://www.agenticsystems.ai/blog/evals-for-agents/) |
 | [`13-time-horizons`](13-time-horizons) | [How long can an agent work? Time horizons explained](https://www.agenticsystems.ai/blog/time-horizons/) |
+| [`14-meta-agent`](14-meta-agent) | [Agents that design agents: ADAS → DGM → AlphaEvolve](https://www.agenticsystems.ai/blog/agents-that-design-agents/) |
 
 Examples call Claude through the official Anthropic SDK. You need an `ANTHROPIC_API_KEY`.
 
