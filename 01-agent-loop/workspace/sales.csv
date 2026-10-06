@@ -1,0 +1,13 @@
+region,quarter,revenue_usd
+North,Q1,182000
+North,Q2,195500
+North,Q3,201250
+South,Q1,143000
+South,Q2,166400
+South,Q3,214900
+East,Q1,120750
+East,Q2,131200
+East,Q3,129800
+West,Q1,176300
+West,Q2,181000
+West,Q3,198400
