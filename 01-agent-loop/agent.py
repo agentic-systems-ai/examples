@@ -1,6 +1,6 @@
 """The agent loop from first principles: a model, three tools, and a while loop.
 
-Companion code for https://agenticsystems.ai/blog/the-agent-loop/
+Companion code for https://www.agenticsystems.ai/blog/the-agent-loop/
 Usage:  python agent.py "Which region had the highest Q3 revenue, and by how much?"
 """
 

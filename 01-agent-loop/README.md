@@ -1,6 +1,6 @@
 # 01 · The agent loop, from first principles
 
-Companion code for the post [The agent loop, from first principles](https://agenticsystems.ai/blog/the-agent-loop/).
+Companion code for the post [The agent loop, from first principles](https://www.agenticsystems.ai/blog/the-agent-loop/).
 
 A complete agent in about 100 lines of Python, with no framework. It has:
 
