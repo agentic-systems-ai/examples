@@ -12,6 +12,7 @@ Each folder is self-contained and has its own README and `requirements.txt`.
 | [`05-mcp-server`](05-mcp-server) | [MCP explained, and what changed when it went stateless](https://www.agenticsystems.ai/blog/mcp-explained/) |
 | [`06-code-mode`](06-code-mode) | [Stop calling tools, start writing code](https://www.agenticsystems.ai/blog/stop-calling-tools-start-writing-code/) |
 | [`07-topologies`](07-topologies) | [One agent or many? Reading the evidence](https://www.agenticsystems.ai/blog/one-agent-or-many/) |
+| [`08-failure-injection`](08-failure-injection) | [Why multi-agent systems fail](https://www.agenticsystems.ai/blog/why-multi-agent-systems-fail/) |
 
 Examples call Claude through the official Anthropic SDK. You need an `ANTHROPIC_API_KEY`.
 
