@@ -1,0 +1,84 @@
+{
+ "source": "examples/03-context, --strategy naive, Claude Opus 5.5, one real run (Oct 2026)",
+ "steps": [
+  {
+   "step": 1,
+   "context": 720,
+   "cached": 0
+  },
+  {
+   "step": 2,
+   "context": 942,
+   "cached": 716
+  },
+  {
+   "step": 3,
+   "context": 6656,
+   "cached": 940
+  },
+  {
+   "step": 4,
+   "context": 12681,
+   "cached": 6654
+  },
+  {
+   "step": 5,
+   "context": 18601,
+   "cached": 12679
+  },
+  {
+   "step": 6,
+   "context": 24528,
+   "cached": 18599
+  },
+  {
+   "step": 7,
+   "context": 30523,
+   "cached": 24526
+  },
+  {
+   "step": 8,
+   "context": 36407,
+   "cached": 30521
+  },
+  {
+   "step": 9,
+   "context": 42358,
+   "cached": 36405
+  },
+  {
+   "step": 10,
+   "context": 48266,
+   "cached": 42356
+  },
+  {
+   "step": 11,
+   "context": 54178,
+   "cached": 48264
+  },
+  {
+   "step": 12,
+   "context": 60161,
+   "cached": 54176
+  },
+  {
+   "step": 13,
+   "context": 66087,
+   "cached": 60159
+  },
+  {
+   "step": 14,
+   "context": 72153,
+   "cached": 66085
+  },
+  {
+   "step": 15,
+   "context": 72432,
+   "cached": 72151
+  }
+ ],
+ "input_tokens_read": 546693,
+ "cache_read": 474231,
+ "output_tokens": 2798,
+ "estimated_cost": 0.51
+}
