@@ -16,6 +16,7 @@ Each folder is self-contained and has its own README and `requirements.txt`.
 | [`09-memory`](09-memory) | [Memory that learns: from CLIN to ReasoningBank](https://www.agenticsystems.ai/blog/memory-that-learns/) |
 | [`10-secure-patterns`](10-secure-patterns) | [The lethal trifecta and six patterns to defuse it](https://www.agenticsystems.ai/blog/lethal-trifecta/) |
 | [`11-harness`](11-harness) | [Harness engineering: the runtime is the product](https://www.agenticsystems.ai/blog/harness-engineering/) |
+| [`12-evals`](12-evals) | [Evals for agents: pass@k is lying to you](https://www.agenticsystems.ai/blog/evals-for-agents/) |
 
 Examples call Claude through the official Anthropic SDK. You need an `ANTHROPIC_API_KEY`.
 
