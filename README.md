@@ -21,7 +21,11 @@ Each folder is self-contained and has its own README and `requirements.txt`.
 | [`14-meta-agent`](14-meta-agent) | [Agents that design agents: ADAS → DGM → AlphaEvolve](https://www.agenticsystems.ai/blog/agents-that-design-agents/) |
 | [`15-observability`](15-observability) | [Watching the agents: identity, logs and visibility](https://www.agenticsystems.ai/blog/watching-the-agents/) |
 | [`16-routing`](16-routing) | [Small models, big systems: routing for agent cost](https://www.agenticsystems.ai/blog/routing-for-agent-cost/) |
+| [`17-a2a`](17-a2a) | [Agents talking to agents: A2A explained](https://www.agenticsystems.ai/blog/a2a-explained/) |
+| [`18-cost-model`](18-cost-model) | [What it really costs to run an agent](https://www.agenticsystems.ai/blog/what-agents-cost/) |
+| [`19-coding-agent`](19-coding-agent) | [Inside a coding agent](https://www.agenticsystems.ai/blog/inside-a-coding-agent/) |
+| [`20-agent-or-not`](20-agent-or-not) | [Should this be an agent? A decision guide](https://www.agenticsystems.ai/blog/should-this-be-an-agent/) |
 
-Examples call Claude through the official Anthropic SDK. You need an `ANTHROPIC_API_KEY`.
+Examples call Claude through the official Anthropic SDK. You need an `ANTHROPIC_API_KEY`; examples from 17 on also run on Amazon Bedrock with `LLM_PROVIDER=bedrock`.
 
 License: MIT
