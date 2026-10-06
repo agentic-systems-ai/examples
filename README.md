@@ -14,6 +14,7 @@ Each folder is self-contained and has its own README and `requirements.txt`.
 | [`07-topologies`](07-topologies) | [One agent or many? Reading the evidence](https://www.agenticsystems.ai/blog/one-agent-or-many/) |
 | [`08-failure-injection`](08-failure-injection) | [Why multi-agent systems fail](https://www.agenticsystems.ai/blog/why-multi-agent-systems-fail/) |
 | [`09-memory`](09-memory) | [Memory that learns: from CLIN to ReasoningBank](https://www.agenticsystems.ai/blog/memory-that-learns/) |
+| [`10-secure-patterns`](10-secure-patterns) | [The lethal trifecta and six patterns to defuse it](https://www.agenticsystems.ai/blog/lethal-trifecta/) |
 
 Examples call Claude through the official Anthropic SDK. You need an `ANTHROPIC_API_KEY`.
 
