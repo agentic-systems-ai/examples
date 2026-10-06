@@ -140,7 +140,8 @@ def answer_from_table(table: str) -> str:
             causes.setdefault(parts[1], []).append(parts[3].rstrip("."))
     worst = max(minutes, key=minutes.get)
     common = max(set(causes[worst]), key=causes[worst].count)
-    return f"{worst}: {minutes[worst]} minutes in total, most often caused by {common} ({len(causes[worst])} incidents)"
+    return (f"{worst}: {minutes[worst]} minutes in total, most often caused by {common} "
+            f"({causes[worst].count(common)} of {len(causes[worst])} incidents)")
 
 
 if __name__ == "__main__":

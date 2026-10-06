@@ -21,7 +21,8 @@ MAX_STEPS = 12
 MEMORY = Path(__file__).parent / "memory.json"
 client = anthropic.Anthropic()
 
-SYSTEM = "You answer questions about Larkspur's customers using the CRM tools. End with a short, specific answer."
+SYSTEM = ("You answer questions about Larkspur's customers using the CRM tools. Commit to one answer: end with a "
+          "final line in the form 'FINAL: <answer>'.")
 
 # A stream of different tasks. Several share a hidden pitfall; none share an answer.
 TASKS = [
@@ -93,8 +94,12 @@ def run(task: str, lessons: list[str]) -> tuple[str, str, int]:
 
 
 def correct(answer: str, expected: str) -> bool:
-    numbers = re.findall(r"\d+(?:\.\d+)?", re.sub(r"(?<=\d),(?=\d)", "", answer))
-    return any(float(n) == float(expected) for n in numbers)
+    """Grade only the committed FINAL line, so a hedge ("197,200 ... or maybe $1,972") can't pass by luck."""
+    final = re.findall(r"FINAL:\s*(.+)", answer)
+    if not final:
+        return False
+    numbers = re.findall(r"\d+(?:\.\d+)?", re.sub(r"(?<=\d),(?=\d)", "", final[-1]))
+    return len(numbers) == 1 and float(numbers[0]) == float(expected)
 
 
 if __name__ == "__main__":
