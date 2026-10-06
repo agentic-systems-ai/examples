@@ -21,7 +21,18 @@ export ANTHROPIC_API_KEY=...     # Windows PowerShell: $env:ANTHROPIC_API_KEY=".
 
 python compare.py --mode direct
 python compare.py --mode code
+python compare.py --mode direct --detailed   # every record also carries its full order and ticket history
+python compare.py --mode code --detailed
 ```
+
+Our results with Claude Opus 5.5, one run each; all four answers were correct:
+
+| Records | direct tool calls | code mode |
+|---|---|---|
+| small (~200 characters each) | **9,052 tokens** | 14,717 tokens |
+| detailed (~1,400 characters each) | 23,193 tokens | **14,464 tokens** |
+
+With small records the model made all 31 lookups in one parallel turn, so plain tool calls were cheaper. With big records, code mode wins, because the histories go to the program, not the model.
 
 Each run prints the answer, then a summary line and the correct answer to compare against:
 

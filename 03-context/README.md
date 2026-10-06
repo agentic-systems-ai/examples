@@ -36,6 +36,18 @@ ground truth: auth, 760 minutes, mostly database failover
 
 The cost estimate uses Claude Opus 5.5 prices as of October 2026, set in `PRICE` in `agent.py`. Check current pricing.
 
+## Our results
+
+One run each against Claude Opus 5.5; all three answered correctly:
+
+| Strategy | Peak context | Tokens read | From cache | Est. cost |
+|---|---|---|---|---|
+| naive | 72,432 | 546,693 | 87% | $0.51 |
+| clear | 11,620 | 274,673 | 38% | $0.96 |
+| compact | 25,456 | 204,873 | 74% | $0.38 |
+
+`clear` had the smallest context and the *highest* cost. With the deliberately low threshold, the server re-cleared on every request, the cache kept rebuilding, and some results were cleared before the agent had noted them. In real use, clear rarely and in big chunks (raise `CLEAR_AT`, keep more results, and consider `clear_at_least`).
+
 ## What to look for
 
 1. **Peak context:** `naive` keeps climbing, while `clear` and `compact` level off.

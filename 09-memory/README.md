@@ -33,6 +33,12 @@ With memory on, you'll see lessons appear as the stream runs:
 
 **Results vary.** A capable model sometimes spots that `4900` looks like cents and gets task 1 right with no help, in which case memory has less to add. Run both modes a few times. What memory buys you is that a mistake made once **stays fixed**, without anyone editing a prompt or a tool.
 
+## Our results
+
+Against Claude Opus 5.5, graded on the committed `FINAL:` line only: **memory off 4/6**, with the cents mistake on tasks 1 and 4. **Memory on 5/6**: it failed task 1, then got every later question right. After six tasks the store held twelve lessons, five of them saying "amounts are cents" in different words, which shows why the *manage* step matters.
+
+An early version of the grader accepted any answer that *contained* the right number, and hedged answers ("197,200, or $1,972 if these are cents") passed. Grading a single committed answer fixed that.
+
 ## Things to try
 
 1. **Run `--memory on` twice without `--reset`.** The second run starts with the lessons from the first.

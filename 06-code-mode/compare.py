@@ -78,11 +78,13 @@ def truth() -> tuple[int, int, str]:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", choices=["direct", "code"], default="code")
-    mode = parser.parse_args().mode
+    parser.add_argument("--detailed", action="store_true", help="bigger records: full order and ticket histories")
+    args = parser.parse_args()
+    mode, crm.DETAILED = args.mode, args.detailed
 
     answer, stats = run(mode)
     count, total, top = truth()
     print(answer)
-    print(f"\n=== {mode}: {stats['api_requests']} API requests, {stats['tool_calls']} tool calls, "
+    print(f"\n=== {mode}{' --detailed' if crm.DETAILED else ''}: {stats['api_requests']} API requests, {stats['tool_calls']} tool calls, "
           f"{stats['tokens_read']:,} tokens read")
     print(f"ground truth: {count} customers, ${total:,} combined, highest spend: {top}")

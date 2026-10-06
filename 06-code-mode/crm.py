@@ -59,14 +59,18 @@ def list_customers(city: str) -> str:
     return json.dumps([{"customer_id": c.short_id, "name": c.name} for c in CUSTOMERS if c.city.lower() == city.lower()])
 
 
+DETAILED = False  # set by compare.py --detailed: records also carry full order and ticket histories
+
+
 def get_customer(customer_id: str) -> str:
-    """One customer's profile, total spend and open tickets."""
+    """One customer's profile, total spend and open tickets (plus full history when DETAILED)."""
     c = BY_ID.get(customer_id)
     if c is None:
         return json.dumps({"error": f"unknown customer_id {customer_id!r}; ids look like 'C-1042'"})
     return json.dumps({"customer_id": c.short_id, "name": c.name, "city": c.city, "plan": c.plan, "email": c.email,
                        "total_spend_usd": sum(o["amount_usd"] for o in c.orders), "order_count": len(c.orders),
-                       "open_tickets": [t["subject"] for t in c.tickets if t["status"] == "open"]})
+                       "open_tickets": [t["subject"] for t in c.tickets if t["status"] == "open"],
+                       **({"orders": c.orders, "tickets": c.tickets} if DETAILED else {})})
 
 
 TOOLS = {"list_customers": list_customers, "get_customer": get_customer}

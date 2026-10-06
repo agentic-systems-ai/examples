@@ -30,6 +30,8 @@ Each task prints PASS or FAIL, along with its tool calls, errors and tokens read
 === v2: …/6 correct | … tool calls, … errors, … tokens per task
 ```
 
+Our results against Claude Opus 5.5 (one run each): both versions got **6/6**, but v1 read **38,960 tokens per task** and v2 **2,792**. A strong model gets the right answers through a bad interface; it just costs about 14 times as much.
+
 The grader is deliberately simple: each expected value must appear in the answer as a whole word or number. Read the printed answers to check it, and add your own tasks to `TASKS` in `eval.py`.
 
 ## Things to try

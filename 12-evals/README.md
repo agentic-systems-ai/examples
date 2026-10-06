@@ -31,6 +31,8 @@ The output shows each task's trials (`✓✗✓✓✓`) and then a table like th
 
 pass@k only goes up as k grows. pass^k only goes down. The gap between them is how *inconsistent* your agent is.
 
+**Heads-up: this suite is saturated for current models.** Against Claude Opus 5.5, all 18 trials (6 × 3) passed, so every metric was 100%. To see the metrics separate, compare against a weaker configuration (see "Change something real" below) or add harder tasks from your own failures.
+
 ## Things to try
 
 1. **Read the failures.** Open `results.json` and read every failed answer. Is the agent wrong, or is the grader too strict? Fix whichever it is. That loop *is* evaluation.

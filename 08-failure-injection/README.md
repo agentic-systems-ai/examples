@@ -30,7 +30,15 @@ python failures.py --scenario verification --variant fixed
 
 Each run prints what the agents did and ends with `=== PASS` or `=== FAIL`.
 
-**Run each a few times.** The broken variants fail *often*, not always. A capable model sometimes lowercases the username anyway, or approves a blurb early. That variability is the real lesson: a design that relies on the model happening to do the right thing will pass your demo and fail in production. Count passes over 5–10 runs.
+**Run each several times.** Our results over six runs each against Claude Opus 5.5:
+
+| Scenario | Broken variant failed | Fixed variant failed |
+|---|---|---|
+| `termination` | 3 of 6 (rewrites grew to 164–176 words and were approved anyway) | 0 of 6 |
+| `withholding` | 0 of 6 (the lead applied the lowercase rule itself, inside its brief) | 0 of 6 |
+| `verification` | 1 of 6 (approved the wrong total) | 0 of 6 |
+
+A current model often compensates for a weak design, and sometimes fails in a *different* way than the one you planned for. That's the lesson: a design that relies on the model happening to do the right thing will pass your demo and fail in production. The fixed variants are guarantees, not averages.
 
 ## Things to try
 
