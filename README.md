@@ -26,6 +26,7 @@ Each folder is self-contained and has its own README and `requirements.txt`.
 | [`19-coding-agent`](19-coding-agent) | [Inside a coding agent](https://www.agenticsystems.ai/blog/inside-a-coding-agent/) |
 | [`20-agent-or-not`](20-agent-or-not) | [Should this be an agent? A decision guide](https://www.agenticsystems.ai/blog/should-this-be-an-agent/) |
 | [`21-computer-use`](21-computer-use) | [Agents that use computers](https://www.agenticsystems.ai/blog/agents-that-use-computers/) |
+| [`22-approvals`](22-approvals) | [Humans in the loop, without the rubber stamp](https://www.agenticsystems.ai/blog/humans-in-the-loop/) |
 
 Examples call Claude through the official Anthropic SDK. You need an `ANTHROPIC_API_KEY`; examples from 17 on also run on Amazon Bedrock with `LLM_PROVIDER=bedrock`.
 
