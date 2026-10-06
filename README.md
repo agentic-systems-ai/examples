@@ -10,6 +10,7 @@ Each folder is self-contained and has its own README and `requirements.txt`.
 | [`03-context`](03-context) | [Context is a budget: a practical guide to context engineering](https://www.agenticsystems.ai/blog/context-is-a-budget/) |
 | [`04-tools`](04-tools) | [Designing tools agents can actually use](https://www.agenticsystems.ai/blog/designing-tools-for-agents/) |
 | [`05-mcp-server`](05-mcp-server) | [MCP explained, and what changed when it went stateless](https://www.agenticsystems.ai/blog/mcp-explained/) |
+| [`06-code-mode`](06-code-mode) | [Stop calling tools, start writing code](https://www.agenticsystems.ai/blog/stop-calling-tools-start-writing-code/) |
 
 Examples call Claude through the official Anthropic SDK. You need an `ANTHROPIC_API_KEY`.
 
