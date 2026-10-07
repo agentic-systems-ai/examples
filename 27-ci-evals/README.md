@@ -37,6 +37,10 @@ A scripted test of the regressed prompt produced:
 - :x: soft regression: pass rate 100% on main -> 75% (drop 25% > noise 16%)
 ```
 
+## Live results (Claude API, Claude Opus 5.5)
+
+Baseline 24/24 (pass^3 100%); unchanged prompt PASS twice (24/24 each); regressed prompt **FAIL**: `address-shipped` 0/3 and `return-late` 0/3 (hard regressions), pass rate 100% → 75% (soft regression). About $0.37 per suite run (an upper bound: cache reads are priced as full input).
+
 ## Things to try
 
 1. **Break something subtler.** Remove only the tracking-number rule and see whether the gate catches it, and at what k.

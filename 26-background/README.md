@@ -25,6 +25,13 @@ python agent.py --blocking  # blocking
 
 Each run prints a timestamped transcript and a summary: when the first reply arrived, when the unrelated question was answered, whether the job's question reached the user, and the result (including which ledger was used).
 
+## Live results (Claude API, Claude Opus 5.5, 2 runs each)
+
+| Design | First reply | Unrelated question answered at | Job's question reached user | Ledger used | Calls / input tokens |
+|---|---|---|---|---|---|
+| blocking | 22.6–24.2 s | 25.7–28.3 s | no | billing (default) | 4 / ~3,600 |
+| background | 6.4–6.5 s | 11.1–14.8 s | yes | general ledger | 8 / ~11,500 |
+
 ## Things to try
 
 1. **Kill it mid-job.** Stop the script while the job is `working`, restart, and resume watching the task id in `tasks.json`. What would you need to make the job itself resumable?

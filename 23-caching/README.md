@@ -31,6 +31,21 @@ python agent.py replay    # replay an existing transcript.json again
 
 Cache diagnostics is available on the Claude API only; with `LLM_PROVIDER=bedrock` the replay still reports usage, without diagnostics (Bedrock path stub-tested only).
 
+## Live results
+
+Claude Opus 5.5, Claude API, replayed twice (results within a few tokens of each other):
+
+```
+variant        requests  uncached   written      read  hit rate   input $  vs none  diagnostics
+stable                4        10     3,745     8,201       69%    0.0204      43%  -
+timestamp             4        10    12,054         0        0%    0.0603     126%  system_changed
+tool_order            4        10     9,610     2,344       20%    0.0486     101%  tools_changed
+history_edit          4        16     5,338     6,714       56%    0.0281      59%  messages_changed
+no_cache              4    11,964         0         0        0%    0.0479     100%  messages_changed
+```
+
+The timestamp variant costs more than no caching. The `tool_order` reads come from request 4, when the rotation returned the tools to their original order. In the no-cache variant, diagnostics reported `messages_changed` between requests 1 and 2 although history was only appended; read diagnostics alongside `usage`.
+
 ## Things to try
 
 1. **Longer runs.** Ask a question that needs more steps and watch the stable hit rate climb.
