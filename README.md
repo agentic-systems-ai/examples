@@ -28,6 +28,7 @@ Each folder is self-contained and has its own README and `requirements.txt`.
 | [`21-computer-use`](21-computer-use) | [Agents that use computers](https://www.agenticsystems.ai/blog/agents-that-use-computers/) |
 | [`22-approvals`](22-approvals) | [Humans in the loop, without the rubber stamp](https://www.agenticsystems.ai/blog/humans-in-the-loop/) |
 | [`23-caching`](23-caching) | [Prompt caching, done properly](https://www.agenticsystems.ai/blog/prompt-caching-properly/) |
+| [`24-identity`](24-identity) | [Agent identity: who is this agent, and what may it do?](https://www.agenticsystems.ai/blog/agent-identity/) |
 
 Examples call Claude through the official Anthropic SDK. You need an `ANTHROPIC_API_KEY`; examples from 17 on also run on Amazon Bedrock with `LLM_PROVIDER=bedrock`.
 
