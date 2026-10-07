@@ -1,0 +1,63 @@
+[
+  {
+    "name": "refund-agent",
+    "owner": "Head of Support Operations",
+    "purpose": "Decide refund requests under the written refund policy v4; escalate anything over $500 or from repeat refunders.",
+    "users": "Customers via the help centre; support staff review escalations",
+    "model": "claude-opus-5-5 (pinned)",
+    "data": ["order records", "refund history (90 days)"],
+    "tools": [
+      {"name": "lookup_order", "effect": "read"},
+      {"name": "refund_history", "effect": "read"},
+      {"name": "issue_refund", "effect": "money"},
+      {"name": "deny_request", "effect": "external"},
+      {"name": "escalate", "effect": "internal"}
+    ],
+    "risk_tier": "medium",
+    "incident_contact": "support-ops-oncall",
+    "controls": [
+      {"category": 0, "control": "In the agent register with an owner, purpose and incident contact",
+       "evidence": ["29-governance/agents.json::refund-agent"]},
+      {"category": 1, "control": "Shadow mode against human decisions before acting, with a written promotion gate",
+       "evidence": ["25-shadow-mode/rollout.py::def shadow", "25-shadow-mode/rollout.py::CRITERIA = {"]},
+      {"category": 1, "control": "Regression eval gate on every prompt or model change",
+       "evidence": ["27-ci-evals/ci_eval.py::def compare"]},
+      {"category": 2, "control": "Own identity; delegated, scoped, short-lived tokens per task",
+       "evidence": ["24-identity/identity.py::def delegate"]},
+      {"category": 4, "control": "Amounts and recipients come from records, never from ticket text; refunds capped at the order total in code",
+       "evidence": ["22-approvals/policy.py::exceeds the order total"]},
+      {"category": 6, "control": "Every write passes a code-level policy that checks arguments, not just tool names",
+       "evidence": ["22-approvals/policy.py::def classify"]},
+      {"category": 7, "control": "Refunds over $50 need a person; unsafe actions denied; escalation after 3 denials",
+       "evidence": ["22-approvals/policy.py::AUTO_REFUND_LIMIT", "22-approvals/agent.py::MAX_CONSECUTIVE_DENIALS"]},
+      {"category": 8, "control": "Traces of every model and tool call; audit log names user, agent and grant",
+       "evidence": ["15-observability/traced_agents.py::def traced_tool", "24-identity/services.py::def _log"]},
+      {"category": 9, "control": "Model id pinned; model upgrades go through the eval gate",
+       "evidence": ["27-ci-evals/agent_under_test.py::MODEL = model_id("]},
+      {"category": 10, "control": "Kill switch checked before every action; behavioural tripwires flip it",
+       "evidence": ["25-shadow-mode/rollout.py::def guarded_execute", "25-shadow-mode/rollout.py::max_refund_rate"]}
+    ]
+  },
+  {
+    "name": "sales-followup-agent",
+    "owner": "",
+    "purpose": "Email prospects after demos with tailored follow-ups.",
+    "users": "Sales team",
+    "model": "latest",
+    "data": ["CRM contacts", "call transcripts"],
+    "tools": [
+      {"name": "read_crm", "effect": "read"},
+      {"name": "send_email", "effect": "external"}
+    ],
+    "risk_tier": "high",
+    "incident_contact": "",
+    "controls": [
+      {"category": 2, "control": "Uses the sales team's shared API key",
+       "evidence": ["sales/shared_key_policy.md"]},
+      {"category": 1, "control": "Prompt reviewed by the sales lead",
+       "evidence": ["sales/prompt_review.md"]},
+      {"category": 4, "control": "Egress allowlist on outbound email",
+       "evidence": ["10-secure-patterns/secure.py::allowlist_enabled"]}
+    ]
+  }
+]
