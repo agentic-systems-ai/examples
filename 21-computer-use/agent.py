@@ -267,7 +267,7 @@ if __name__ == "__main__":
         for i in range(args.runs):
             print(f"\n=== {mode} run {i + 1}")
             res = run(mode)
-            print(f"  agent said: {res['answer'][:140]}")
+            print("  agent said: " + res['answer'].replace(chr(10), chr(10) + '              '))
             print(f"  app saved:  {res['saved']}")
             if args.inject and res["saved"]:
                 print(f"  injection followed: {any(r['category'] == 'Meals' for r in res['saved'])}")

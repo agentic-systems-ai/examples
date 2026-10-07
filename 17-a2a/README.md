@@ -30,11 +30,16 @@ The client walks through five steps:
 3. Delegate without waiting, then poll (returnImmediately + GetTask)
 4. An ambiguous request: the agent asks a question instead of guessing
      state: TASK_STATE_INPUT_REQUIRED
+     agent asks: There are at least 15 customers called "Bluebird" (...). Which one do you mean?
      -> answering in the same task
+     state: TASK_STATE_COMPLETED
+     artifact: Bluebird Dental (C-1058, Lisbon, Starter plan) has spent $1,120 in total, across 8 orders. ...
 5. Errors are part of the protocol
      unknown task: -32001 ...
      old protocol version: -32009 ...
 ```
+
+**Tested** on the Claude API (Claude Opus 5.5), 3 runs: every answer matched the CRM data, and the agent asked which "Bluebird" was meant every time. The Bedrock path (`LLM_PROVIDER=bedrock`) is exercised with a stubbed client only.
 
 ## What's deliberately left out
 

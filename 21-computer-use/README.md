@@ -27,14 +27,16 @@ python agent.py --mode all --inject     # put a prompt injection in the page's b
 python app.py                           # just the app, at http://127.0.0.1:8765
 ```
 
-The run prints every action, what the agent said, what the app saved, and a comparison table:
+The run prints every action, what the agent said, what the app saved, and a comparison table. One live run on the Claude API (Claude Opus 5.5):
 
 ```
-mode    success  steps  actions  shots  input tok  output tok  seconds
-api        True      …        …      0          …           …        …
-tree       True      …        …      0          …           …        …
-screen     True      …        …      …          …           …        …
+mode     success  steps  actions  shots  input tok output tok  seconds
+api         True      2        1      0      1,429        289      6.0
+tree        True      5        9      0      7,101        615     15.1
+screen      True      7       21      6     62,117      1,022     62.2
 ```
+
+Over 3 runs per mode, all 9 succeeded and the numbers barely moved (screen: 62,033–62,117 input tokens, 47–62 s). In the screen runs, clicking an option in the open dropdown list did nothing in headless Chromium; the agent noticed in the next screenshot and selected the category with the keyboard. With `--inject`, no mode followed the planted instruction. The Bedrock path (`computer_20251124`) is exercised with a stubbed client only.
 
 ## Implementation notes
 

@@ -33,7 +33,7 @@ tiered            25        2        3           0          1
 never_ask         25        0        0           3          0
 ```
 
-A real model may refuse the injection itself; run it and see. The tiered result doesn't depend on that.
+**Live results** (Claude API, Claude Opus 5.5, 3 runs of all three policies): the model declined the injected requests in every run, so no unsafe action ran under any policy. Prompts per run were 27–28 for `ask_all` and 2 for `tiered`. The tiered policy removes over 90% of the prompts with no loss of safety, and it's the only one that still holds when the model does get fooled, as the scripted run shows. The Bedrock path is exercised with a stubbed client only.
 
 ## Things to try
 

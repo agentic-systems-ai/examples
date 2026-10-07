@@ -43,6 +43,8 @@ The output is a step-by-step trace, the agent's summary, the diff it made, and a
 === DONE: tests pass=True, tests unchanged=True | 7 steps, 7 tool calls, …
 ```
 
+**Live results** (Claude API, Claude Opus 5.5, 3 runs): 3/3 fixed with the same one-line change; 4 model calls, 6–8 tool calls, 7,550–8,252 input and 453–591 output tokens per run (about $0.05). The agent never attempted to edit the tests. The Bedrock path (`LLM_PROVIDER=bedrock`) is exercised with a stubbed client only.
+
 ## Things to try
 
 1. **Make the bug harder.** Put a second, interacting bug in `discounts.py`, or a misleading comment, and watch how the exploration changes.
