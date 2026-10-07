@@ -1,0 +1,45 @@
+# Copy to .github/workflows/agent-evals.yml in the repository that holds your agent.
+# Needs a repository secret ANTHROPIC_API_KEY (ideally a key in its own workspace, with a spend limit).
+#
+# The baseline is measured in the same job as the change: main's prompt, then the pull request's prompt, on the
+# same runner, minutes apart. That doubles the cost but removes "the baseline ran on a different day, on different
+# infrastructure" as an explanation for any difference.
+name: Agent evals
+
+on:
+  pull_request:
+    paths: ["prompts/**", "agent_under_test.py", "suite.py"]   # run when the agent or its tests change
+  workflow_dispatch:
+
+concurrency:                       # one eval run per branch; a new push cancels the old run (and its spend)
+  group: agent-evals-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  evals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -r requirements.txt
+
+      - name: Baseline (main's prompt)
+        env: {ANTHROPIC_API_KEY: "${{ secrets.ANTHROPIC_API_KEY }}"}
+        run: |
+          git show origin/${{ github.base_ref }}:prompts/system.md > prompts/system_main.md
+          python ci_eval.py --prompt system_main.md --write-baseline --k 3 --budget 2.00
+
+      - name: This change (the pull request's prompt)
+        env: {ANTHROPIC_API_KEY: "${{ secrets.ANTHROPIC_API_KEY }}"}
+        run: python ci_eval.py --prompt system.md --k 3 --budget 2.00
+
+      - name: Keep the full results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with: {name: eval-results-${{ github.run_id }}, path: results.json}

@@ -31,6 +31,7 @@ Each folder is self-contained and has its own README and `requirements.txt`.
 | [`24-identity`](24-identity) | [Agent identity: who is this agent, and what may it do?](https://www.agenticsystems.ai/blog/agent-identity/) |
 | [`25-shadow-mode`](25-shadow-mode) | [Rolling out agents safely: shadow mode, canaries and kill switches](https://www.agenticsystems.ai/blog/rolling-out-agents/) |
 | [`26-background`](26-background) | [Background agents: async tools and long tasks](https://www.agenticsystems.ai/blog/background-agents/) |
+| [`27-ci-evals`](27-ci-evals) | [Testing agents in CI](https://www.agenticsystems.ai/blog/testing-agents-in-ci/) |
 
 Examples call Claude through the official Anthropic SDK. You need an `ANTHROPIC_API_KEY`; examples from 17 on also run on Amazon Bedrock with `LLM_PROVIDER=bedrock`.
 
